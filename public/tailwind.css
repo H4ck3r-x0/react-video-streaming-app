@@ -1,0 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+.duration {
+	animation-duration: 5s;
+}
+
+@tailwind utilities;
