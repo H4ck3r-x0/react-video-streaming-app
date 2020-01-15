@@ -2,8 +2,22 @@
 
 @tailwind components;
 
+::selection {
+	background: #553c9a;
+	color: #f7fafc;
+}
+::-moz-selection {
+	background: #553c9a;
+	color: #f7fafc;
+}
+
 .duration {
 	animation-duration: 5s;
+}
+
+.texture {
+	background-color: #f7fafc;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23e2e8f0' fill-opacity='0.9' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 @tailwind utilities;
