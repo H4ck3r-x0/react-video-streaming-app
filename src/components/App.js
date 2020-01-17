@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
+import history from "../history";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import FadeIn from "react-fade-in";
@@ -8,6 +9,7 @@ import Header from "./Header";
 import Landing from "./Landing";
 import StreamCreate from "./streams/StreamCreate";
 import StreamList from "./streams/StreamList";
+import StreamEdit from "./streams/StreamEdit";
 
 class App extends React.Component {
 	constructor(props) {
@@ -40,20 +42,20 @@ class App extends React.Component {
 		return (
 			<div>
 				<FadeIn>
-					<Router>
+					<Router history={history}>
 						<Header />
-
-						<Switch>
-							<Route path="/" exact>
-								<Landing />
-							</Route>
-							<Route path="/browse">
-								<StreamList />
-							</Route>
-							<Route path="/stream/new">
-								<StreamCreate />
-							</Route>
-						</Switch>
+						<Route path="/" exact>
+							<Landing />
+						</Route>
+						<Route path="/browse">
+							<StreamList />
+						</Route>
+						<Route path="/stream/new">
+							<StreamCreate />
+						</Route>
+						<Route path="/stream/edit/:id">
+							<StreamEdit history={history} />
+						</Route>
 					</Router>
 				</FadeIn>
 			</div>

@@ -2,6 +2,7 @@ import React from "react";
 
 class StreamShow extends React.Component {
 	render() {
+		console.log(this.props);
 		return (
 			<div className="bg-white texture p-4 border-b-2 border-gray-200 h-auto">
 				<div className="container m-auto flex justify-center">
