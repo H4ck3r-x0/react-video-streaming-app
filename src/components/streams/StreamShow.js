@@ -2,12 +2,36 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchStream } from "../../actions";
 import Loader from "react-loader-spinner";
+import flv from "flv.js";
 
 class StreamShow extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.videoRef = React.createRef();
+	}
 	componentDidMount() {
+		console.log(this.videoRef);
 		setTimeout(() => {
 			this.props.fetchStream(this.props.match.params.id);
+			this.buildPlayer();
 		}, 1000);
+	}
+	// componentDidUpdate() {
+	// 	this.buildPlayer();
+	// }
+	buildPlayer() {
+		if (this.player || !this.props.stream) {
+			return;
+		}
+
+		this.player = flv.createPlayer({
+			type: "flv",
+			url: `http://localhost:8000/live/${this.props.match.params.id}.flv`
+		});
+		this.player.attachMediaElement(this.videoRef.current);
+		this.player.load();
+		// flv.play();
 	}
 	renderLoading() {
 		return (
@@ -31,7 +55,20 @@ class StreamShow extends React.Component {
 		}
 		const { title, description } = this.props.stream;
 
-		return <div>{title}</div>;
+		return (
+			<div className="w-full mt-4 flex justify-center">
+				<div className="flex flex-col">
+					<div className="w-full">
+						<video
+							ref={this.videoRef}
+							style={{ width: "50%" }}
+							controls
+						/>
+					</div>
+					<div>{title}</div>
+				</div>
+			</div>
+		);
 	}
 }
 
