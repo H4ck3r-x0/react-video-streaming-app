@@ -1,12 +1,11 @@
 import React from "react";
 
-class StreamShow extends React.Component {
+class Landing extends React.Component {
 	render() {
-		console.log(this.props);
 		return (
-			<div className="bg-white texture p-4 border-b-2 border-gray-200 h-auto">
+			<div className="bg-white texture p-4 border-b-2 border-gray-200 h-screen">
 				<div className="container m-auto flex justify-center">
-					<div className="">
+					<div className="mt-24">
 						<h1 className="flex justify-center text-6xl tracking-wider text-gray-800 font-semibold">
 							Twitch Live
 						</h1>
@@ -25,4 +24,4 @@ class StreamShow extends React.Component {
 	}
 }
 
-export default StreamShow;
+export default Landing;

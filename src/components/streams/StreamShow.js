@@ -11,15 +11,20 @@ class StreamShow extends React.Component {
 		this.videoRef = React.createRef();
 	}
 	componentDidMount() {
-		console.log(this.videoRef);
 		setTimeout(() => {
 			this.props.fetchStream(this.props.match.params.id);
 			this.buildPlayer();
 		}, 1000);
 	}
-	// componentDidUpdate() {
-	// 	this.buildPlayer();
-	// }
+
+	componentDidUpdate() {
+		this.buildPlayer();
+	}
+
+	componentWillUnmount() {
+		this.player.destroy();
+	}
+
 	buildPlayer() {
 		if (this.player || !this.props.stream) {
 			return;
@@ -31,7 +36,6 @@ class StreamShow extends React.Component {
 		});
 		this.player.attachMediaElement(this.videoRef.current);
 		this.player.load();
-		// flv.play();
 	}
 	renderLoading() {
 		return (
@@ -56,16 +60,23 @@ class StreamShow extends React.Component {
 		const { title, description } = this.props.stream;
 
 		return (
-			<div className="w-full mt-4 flex justify-center">
+			<div className="container m-auto w-full mt-4 mb-64">
 				<div className="flex flex-col">
-					<div className="w-full">
+					<div className="">
 						<video
+							className="h-full w-full rounded focus:outline-none shadow-lg"
 							ref={this.videoRef}
-							style={{ width: "50%" }}
 							controls
 						/>
 					</div>
-					<div>{title}</div>
+					<div className="mt-3">
+						<h1 className="text-3xl font-bold text-gray-800">
+							{title}
+						</h1>
+						<p className="text-lg itilic text-gray-600">
+							{description}
+						</p>
+					</div>
 				</div>
 			</div>
 		);
