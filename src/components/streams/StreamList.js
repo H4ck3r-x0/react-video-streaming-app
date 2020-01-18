@@ -18,9 +18,12 @@ class StreamList extends React.Component {
 					>
 						<i className="fas fa-edit text-blue-300 hover:text-blue-400"></i>
 					</Link>
-					<button type="button" className="focus:outline-none">
+					<Link
+						to={`/stream/delete/${stream.id}`}
+						className="focus:outline-none"
+					>
 						<i className="fas fa-trash-alt text-red-300 hover:text-red-400"></i>
-					</button>
+					</Link>
 				</div>
 			);
 		}
@@ -43,13 +46,13 @@ class StreamList extends React.Component {
 						</div>
 						<div className="flex items-center mt-3 p-3 bg-gray-800 rounded">
 							<div className="w-1/2 flex justify-start">
-								<button
-									type="button"
+								<Link
+									to={`/stream/${stream.id}`}
 									className="bg-white hover:bg-gray-100 px-4 py-1 text-gray-700 text-sm font-bold rounded"
 								>
 									WATCH NOW
 									<i className="fas fa-arrow-circle-right ml-2"></i>
-								</button>
+								</Link>
 								<span className="flex justify-end items-center  text-gray-700">
 									<i className="fas fa-video ml-2 text-red-300 animated infinite flash duration delay-1s"></i>
 								</span>

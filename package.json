@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "add": "^2.0.6",
     "axios": "^0.19.1",
     "lodash": "^4.17.15",
     "react": "^16.12.0",
@@ -20,7 +21,8 @@
     "redux": "^4.0.5",
     "redux-form": "^8.2.6",
     "redux-thunk": "^2.3.0",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^1.1.4",
+    "yarn": "^1.21.1"
   },
   "scripts": {
     "start": "react-scripts start",
